@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="StudyBible">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Study Bible</title>
+
+    <!-- Bootstrap -->
+    <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
+
+    <script>
+      require("./node_modules/angular/angular.min.js");
+      require("./js/app.js");
+      require("./js/bibleController.js");
+    </script>
+
+  </head>
+  <body>
+    <div class="container" ng-controller="bibleController as bibleCtrl">
+
+      <h1 class="text-center">{{bibleCtrl.book.name}}</h1>
+      <div ng-repeat="chapter in bibleCtrl.book.chapters">
+        <h3>Chapter {{$index + 1}}</h3>
+        <br>
+        <div ng-repeat="verse in chapter.verses">
+          <p class="text-justify"><small>{{verse.num}}. </small>{{verse.text}}</p>
+        </div>
+        <br>
+      </div>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script>window.$ = window.jQuery = require('jquery');</script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
